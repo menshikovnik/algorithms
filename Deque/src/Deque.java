@@ -41,9 +41,8 @@ public class Deque {
             check[rear] = true;
             return;
         }
-        if (rear != size) {
-            rear++;
-        } else if (isEmpty(0)) {
+        rear++;
+        if (rear > size - 1 && isEmpty(0)) {
             rear = 0;
         }
         if (isEmpty(rear)) {
@@ -94,8 +93,8 @@ public class Deque {
     }
 
     private boolean isFull() {
-        for (int i = 0; i < check.length - 1; i++) {
-            if (!check[i]) {
+        for (boolean value : check) {
+            if (!value) {
                 return false;
             }
         }
@@ -112,12 +111,12 @@ public class Deque {
         check = new boolean[size];
         if (front == 0) {
             System.arraycopy(arr1, 0, arr, 0, arr1.length);
-            for (int i = 0; i < rear; i++) {
+            for (int i = 0; i <= rear; i++) {
                 check[i] = true;
             }
         } else {
             front = arr.length - tmp;
-            for (int i = arr.length - tmp; i <= arr.length; i++) {
+            for (int i = front; i <= arr.length; i++) {
                 if (i == arr.length) {
                     i = 0;
                     tmp1 = 0;
