@@ -1,6 +1,16 @@
 public class Main {
     public static void main(String[] args) {
-        Deque dq = new Deque(5);
+        Deque<Integer> dq = new Deque<>(5);
+        dq.addFront(5);
+        dq.addFront(5);
+        dq.addFront(5);
+        dq.deleteRear();
+        dq.addFront(5);
+        dq.addFront(5);
+        dq.addFront(5);
+        dq.addFront(5);
+        dq.addFront(5);
+        dq.addFront(5);
         dq.addFront(5);
         dq.addRear(1);
         dq.addRear(2);
