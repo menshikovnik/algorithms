@@ -52,36 +52,44 @@ public class Deque<T> {
         }
     }
 
-    public void deleteFront() {
+    public T deleteFront() {
+        T value = null;
         if (!isEmpty(front)) {
+            value = arr[front];
             arr[front] = null;
             if (front != size) {
                 front++;
             } else front = 0;
         }
+        return value;
     }
 
-    public void deleteRear() {
+    public T deleteRear() {
+        T value = null;
         if (rear == -1) {
             rear++;
+            value = arr[rear];
             arr[rear] = null;
             rear = size;
-            return;
+            return value;
         }
         if (rear == 0 && !isEmpty(rear)) {
+            value = arr[rear];
             arr[rear] = null;
             if (!isEmpty(size)) {
                 rear = size;
-                return;
+                return value;
             }
         }
         if (!isEmpty(rear)) {
+            value = arr[rear];
             arr[rear] = null;
             rear--;
         }
         if (rear == -1) {
             rear = size;
         }
+        return value;
     }
 
     private boolean isEmpty(int x) {
