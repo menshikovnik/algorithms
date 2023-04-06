@@ -1,8 +1,5 @@
 package Solution;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Iterator;
 
 public class SimpleLinkedList<T> implements Iterable<T> {
@@ -13,7 +10,7 @@ public class SimpleLinkedList<T> implements Iterable<T> {
         }
     }
 
-    private class SimpleLinkedListNode<T> {
+    private static class SimpleLinkedListNode<T> {
         public T value;
         public SimpleLinkedListNode<T> next;
 
@@ -173,19 +170,23 @@ public class SimpleLinkedList<T> implements Iterable<T> {
         return list;
     }
 
-    public static SimpleLinkedList<String> longestWord(SimpleLinkedList<String> list) throws SimpleLinkedListException {
+    public void clear() {
+        head = null;
+        tail = null;
+        count = 0;
+    }
+
+    public static SimpleLinkedList<String> longestWord(SimpleLinkedList<String> list) {
         SimpleLinkedList<String> listResult = new SimpleLinkedList<>();
         int max = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).length() == max) {
-                listResult.addLast(list.get(i));
+        for (String word : list) {
+            if (word.length() == max) {
+                listResult.addLast(word);
             }
-            if (list.get(i).length() > max) {
-                for (int j = 0; j < listResult.size(); j++) {
-                    listResult.removeLast();
-                }
-                max = list.get(i).length();
-                listResult.addLast(list.get(i));
+            if (word.length() > max) {
+                listResult.clear();
+                max = word.length();
+                listResult.addLast(word);
             }
         }
         return listResult;
