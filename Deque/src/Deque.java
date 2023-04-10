@@ -105,6 +105,18 @@ public class Deque<T> {
         return true;
     }
 
+    private int size() {
+        return arr.length;
+    }
+
+    public T getFront() {
+        return arr[front];
+    }
+
+    public T getRear() {
+        return arr[rear];
+    }
+
     private void arrayExpansion() {
         size = size * 2;
         T[] arr1 = (T[]) new Object[size];
