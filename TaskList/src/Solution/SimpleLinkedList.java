@@ -154,7 +154,7 @@ public class SimpleLinkedList<T> implements Iterable<T> {
         return getNode(index).value;
     }
 
-    public static String[] toString(SimpleLinkedList<String> list) throws SimpleLinkedList.SimpleLinkedListException {
+    public static String[] toString(SimpleLinkedList<String> list) throws SimpleLinkedListException {
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
             s.append(i > 0 ? ", " : "").append(list.get(i));
