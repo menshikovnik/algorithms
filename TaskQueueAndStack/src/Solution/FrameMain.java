@@ -21,7 +21,6 @@ public class FrameMain extends JFrame {
     private JScrollPane scrollPaneTableInput;
     private JScrollPane scrollPaneTableOutput;
     private JButton button1;
-    private JTextField textField1;
 
     private final JFileChooser fileChooserOpen;
 
@@ -78,7 +77,10 @@ public class FrameMain extends JFrame {
                 }
                 int[] resultArr = new int[stack.size()];
                 int i = 0;
-                for (int value : Solution.RestoreTheOriginalSequence(stack)){
+                if (stack.size() == 1){
+                    resultArr[0] = stack.pop();
+                    JTableUtils.writeArrayToJTable(tableOutput, resultArr);
+                } else for (int value : Solution.RestoreTheOriginalSequence(stack)){
                     resultArr[i] = value;
                     i++;
                 }
@@ -97,7 +99,10 @@ public class FrameMain extends JFrame {
                 }
                 int[] resultArr = new int[stack.size()];
                 int i = 0;
-                for (int value : MyDeque.RestoreTheOriginalSequenceWithMyDeque(stack)){
+                if (stack.size() == 1){
+                    resultArr[0] = stack.pop();
+                    JTableUtils.writeArrayToJTable(tableOutput, resultArr);
+                }else for (int value : MyDeque.RestoreTheOriginalSequenceWithMyDeque(stack)){
                     resultArr[i] = value;
                     i++;
                 }

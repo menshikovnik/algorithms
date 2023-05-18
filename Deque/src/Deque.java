@@ -1,3 +1,6 @@
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class Deque<T> {
     private T[] arr;
     private int front;
@@ -10,6 +13,40 @@ public class Deque<T> {
         rear = -1;
         this.size = arr.length - 1;
 
+    }
+    public Iterator<T> iterator() {
+        return new MyDequeIterator();
+    }
+
+    public class MyDequeIterator implements Iterator<T> {
+        private T curr;
+        private int i = front;
+        private int count = 0;
+        public MyDequeIterator() {
+            this.curr = arr[i];
+        }
+
+        public boolean hasNext() {
+            return count <= size;
+        }
+
+        public T next() {
+            if (!this.hasNext()) {
+                throw new NoSuchElementException();
+            }
+            T value = curr;
+            if (i == size){
+                i = -1;
+            }
+            curr = arr[i + 1];
+            i++;
+            count++;
+            return value;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void addFront(T value) {

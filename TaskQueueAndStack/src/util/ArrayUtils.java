@@ -106,7 +106,7 @@ public class ArrayUtils {
     public static int[] toIntArray(String str) {
         Scanner scanner = new Scanner(str);
         scanner.useLocale(Locale.ROOT);
-        scanner.useDelimiter("(\\s|[,;])+");
+        scanner.useDelimiter(" ");
         List<Integer> list = new ArrayList<>();
         while (scanner.hasNext()) {
             list.add(scanner.nextInt());
@@ -476,7 +476,7 @@ public class ArrayUtils {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             lines = new ArrayList<>();
             while ((str = br.readLine()) != null) {
-                lines.addAll(Arrays.asList(str.split(" ")));
+                lines.addAll(Arrays.asList(str.split("\\n")));
             }
             // обязательно, чтобы закрыть открытый файл
         }
