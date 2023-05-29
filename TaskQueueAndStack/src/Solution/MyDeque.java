@@ -3,9 +3,8 @@ package Solution;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Stack;
 
-class MyDeque<T> implements Iterable<T> {
+public class MyDeque<T> implements Iterable<T>, NotImplementedDeque<T> {
     private T[] arr;
     private int front;
     private int rear;
@@ -27,6 +26,7 @@ class MyDeque<T> implements Iterable<T> {
         private T curr;
         private int i = front;
         private int count = 0;
+
         public MyDequeIterator() {
             this.curr = arr[i];
         }
@@ -40,7 +40,7 @@ class MyDeque<T> implements Iterable<T> {
                 throw new NoSuchElementException();
             }
             T value = curr;
-            if (i == size){
+            if (i == size) {
                 i = -1;
             }
             curr = arr[i + 1];
@@ -54,7 +54,8 @@ class MyDeque<T> implements Iterable<T> {
         }
     }
 
-    public void addFront(T value) {
+    @Override
+    public void addFirst(T value) {
         if (isFull()) {
             arrayExpansion();
         }
@@ -69,7 +70,8 @@ class MyDeque<T> implements Iterable<T> {
         }
     }
 
-    public void addRear(T value) {
+    @Override
+    public void addLast(T value) {
         if (isFull()) {
             arrayExpansion();
         }
@@ -94,7 +96,8 @@ class MyDeque<T> implements Iterable<T> {
         }
     }
 
-    public T deleteFront() {
+    @Override
+    public T removeFirst() {
         T value = null;
         if (!isEmpty(front)) {
             value = arr[front];
@@ -106,7 +109,8 @@ class MyDeque<T> implements Iterable<T> {
         return value;
     }
 
-    public T deleteRear() {
+    @Override
+    public T removeLast() {
         T value = null;
         if (rear == -1) {
             rear++;
@@ -147,15 +151,18 @@ class MyDeque<T> implements Iterable<T> {
         return true;
     }
 
-    private int size() {
+    @Override
+    public int size() {
         return arr.length;
     }
 
-    public T getFront() {
+    @Override
+    public T getFirst() {
         return arr[front];
     }
 
-    public T getRear() {
+    @Override
+    public T getLast() {
         return arr[rear];
     }
 
@@ -183,16 +190,4 @@ class MyDeque<T> implements Iterable<T> {
             }
         }
     }
-
-    public static MyDeque<Integer> RestoreTheOriginalSequenceWithMyDeque(Stack<Integer> resultSequence) {
-        MyDeque<Integer> sourceSequence = new MyDeque<Integer>(resultSequence.size());
-        sourceSequence.addRear(resultSequence.pop());
-        sourceSequence.addRear(resultSequence.pop());
-        while (!resultSequence.isEmpty()) {
-            sourceSequence.addRear(sourceSequence.deleteFront());
-            sourceSequence.addRear(resultSequence.pop());
-        }
-        return sourceSequence;
-    }
 }
-

@@ -9,6 +9,8 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 
@@ -52,7 +54,7 @@ public class FrameMain extends JFrame {
         menuBarMain.add(menuLookAndFeel);
         SwingUtils.initLookAndFeelMenu(menuLookAndFeel);
 
-        JTableUtils.writeArrayToJTable(tableInput, new int[]{7, 5, 3, 1, 4, 6 ,2});
+        JTableUtils.writeArrayToJTable(tableInput, new int[]{7, 5, 3, 1, 4, 6, 2});
 
         this.pack();
 
@@ -72,15 +74,16 @@ public class FrameMain extends JFrame {
                 int[] matrix = JTableUtils.readIntArrayFromJTable(tableInput);
                 assert matrix != null;
                 Stack<Integer> stack = new Stack<>();
-                for (int value : matrix){
+                for (int value : matrix) {
                     stack.add(value);
                 }
                 int[] resultArr = new int[stack.size()];
                 int i = 0;
-                if (stack.size() == 1){
+                Deque<Integer> sourceSequence = new LinkedList<>();
+                if (stack.size() == 1) {
                     resultArr[0] = stack.pop();
                     JTableUtils.writeArrayToJTable(tableOutput, resultArr);
-                } else for (int value : Solution.RestoreTheOriginalSequence(stack)){
+                } else for (int value : Solution.RestoreTheOriginalSequence(stack, sourceSequence)) {
                     resultArr[i] = value;
                     i++;
                 }
@@ -94,20 +97,21 @@ public class FrameMain extends JFrame {
                 int[] matrix = JTableUtils.readIntArrayFromJTable(tableInput);
                 assert matrix != null;
                 Stack<Integer> stack = new Stack<>();
-                for (int value : matrix){
+                for (int value : matrix) {
                     stack.add(value);
                 }
                 int[] resultArr = new int[stack.size()];
                 int i = 0;
-                if (stack.size() == 1){
+                MyDeque<Integer> sourceSequence = new MyDeque<Integer>(stack.size());
+                if (stack.size() == 1) {
                     resultArr[0] = stack.pop();
                     JTableUtils.writeArrayToJTable(tableOutput, resultArr);
-                }else for (int value : MyDeque.RestoreTheOriginalSequenceWithMyDeque(stack)){
+                } else for (int value : Solution.RestoreTheOriginalSequence(stack, sourceSequence)) {
                     resultArr[i] = value;
                     i++;
                 }
                 JTableUtils.writeArrayToJTable(tableOutput, resultArr);
-            } catch (Exception e){
+            } catch (Exception e) {
                 SwingUtils.showErrorMessageBox(e);
             }
         });
