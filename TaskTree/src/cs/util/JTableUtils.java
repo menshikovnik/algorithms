@@ -1,4 +1,4 @@
-package util;
+package cs.util;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -53,7 +53,7 @@ public class JTableUtils {
         } catch (ParseException e) {
             throw new NumberFormatException(e.getMessage());
         }
-    };
+    }
 
 
     private static <T extends JComponent> T setFixedSize(T comp, int width, int height) {
@@ -374,7 +374,7 @@ public class JTableUtils {
      * @param table компонент JTable
      * @param rowCount новое кол-во строк (меньше или равно 0 - не менять)
      * @param colCount новое кол-во столбцов (меньше или равно 0 - не менять)
-     * @param colCount высота строки (меньше или равно 0 - не менять)
+     * @param rowHeight высота строки (меньше или равно 0 - не менять)
      * @param columnWidth ширина столбца (меньше или равно 0 - не менять)
      */
     public static void resizeJTable(JTable table, int rowCount, int colCount, int rowHeight, int columnWidth) {

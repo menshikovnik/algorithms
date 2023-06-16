@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Deque/Deque.iml" filepath="$PROJECT_DIR$/Deque/Deque.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaskQueueAndStack/TaskQueueAndStack.iml" filepath="$PROJECT_DIR$/TaskQueueAndStack/TaskQueueAndStack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaskSort/TaskSort.iml" filepath="$PROJECT_DIR$/TaskSort/TaskSort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaskTree/TaskTree.iml" filepath="$PROJECT_DIR$/TaskTree/TaskTree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/algorithms.iml" filepath="$PROJECT_DIR$/.idea/algorithms.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,6 +1,8 @@
-package util;
+package cs.util;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class ArrayUtils {
@@ -161,22 +163,7 @@ public class ArrayUtils {
         }
         return sb.toString();
     }
-    public static String toString(char[] arr, String itemFormat) {
-        if (arr == null) {
-            return null;
-        }
-        if (itemFormat == null || itemFormat.length() == 0) {
-            itemFormat = "%s";
-        }
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < arr.length; i++) {
-            if (i > 0) {
-                sb.append(", ");
-            }
-            sb.append(String.format(Locale.ROOT, itemFormat, arr[i]));
-        }
-        return sb.toString();
-    }
+
     public static String toString(int[] arr) {
         return toString(arr, null);
     }
@@ -448,6 +435,7 @@ public class ArrayUtils {
         }
         return sb.toString();
     }
+
     public static String toString(int[][] arr2) {
         return toString(arr2, null);
     }
@@ -470,13 +458,12 @@ public class ArrayUtils {
     /**
      * Чтение всего текстового файла в массив строк
      */
-    public static String[] readLinesFromFile(String fileName) throws IOException {
+    public static String[] readLinesFromFile(String fileName) throws FileNotFoundException {
         List<String> lines;
-        String str;
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        try (Scanner scanner = new Scanner(new File(fileName), "UTF-8")) {
             lines = new ArrayList<>();
-            while ((str = br.readLine()) != null) {
-                lines.addAll(Arrays.asList(str.split(" ")));
+            while (scanner.hasNext()) {
+                lines.add(scanner.nextLine());
             }
             // обязательно, чтобы закрыть открытый файл
         }
@@ -490,7 +477,7 @@ public class ArrayUtils {
         try {
             return toIntArray(readLinesFromFile(fileName)[0]);
         }
-        catch(IOException e) {
+        catch(FileNotFoundException e) {
             return null;
         }
     }
@@ -498,7 +485,7 @@ public class ArrayUtils {
     /**
      * Чтение массива double[] из первой строки текстового файла
      */
-    public static double[] readDoubleArrayFromFile(String fileName) throws IOException {
+    public static double[] readDoubleArrayFromFile(String fileName) {
         try {
             return toDoubleArray(readLinesFromFile(fileName)[0]);
         }
@@ -510,7 +497,7 @@ public class ArrayUtils {
     /**
      * Чтение двухмерного массива из текстового файла
      */
-    public static int[][] readIntArray2FromFile(String fileName) throws IOException {
+    public static int[][] readIntArray2FromFile(String fileName) {
         try {
             return toIntArray2(readLinesFromFile(fileName));
         }
@@ -519,7 +506,7 @@ public class ArrayUtils {
         }
     }
 
-    public static double[][] readDoubleArray2FromFile(String fileName) throws IOException {
+    public static double[][] readDoubleArray2FromFile(String fileName) {
         try {
             return toDoubleArray2(readLinesFromFile(fileName));
         }
@@ -618,6 +605,4 @@ public class ArrayUtils {
     public static int[][] createRandomIntMatrix(int rowCount, int colCount, int maxValue) {
         return createRandomIntMatrix(rowCount, colCount, 0, maxValue);
     }
-
-
 }

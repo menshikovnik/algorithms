@@ -1,4 +1,4 @@
-package util;
+package cs.util;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
@@ -11,15 +11,13 @@ import java.util.logging.Logger;
 
 /**
  * Набор функций для работы с оконными приложениями с ипользованием Swing
- *
  * @author Дмитрий Соломатин (кафедра ПиИТ ФКН ВГУ)
  */
 public class SwingUtils {
     /**
      * Показать диалоговое окно с информационным сообщением
-     *
      * @param message Сообщение
-     * @param title   Заголовок окна
+     * @param title Заголовок окна
      */
     public static void showInfoMessageBox(String message, String title) {
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
@@ -27,7 +25,6 @@ public class SwingUtils {
 
     /**
      * Показать диалоговое окно с информационным сообщением
-     *
      * @param message Сообщение
      */
     public static void showInfoMessageBox(String message) {
@@ -36,10 +33,9 @@ public class SwingUtils {
 
     /**
      * Показать диалоговое окно с сообщением об ошибке
-     *
      * @param message Сообщение
-     * @param title   Заголовок окна
-     * @param ex      Иcключение
+     * @param title Заголовок окна
+     * @param ex Иcключение
      */
     public static void showErrorMessageBox(String message, String title, Throwable ex) {
         StringBuilder sb = new StringBuilder(ex.toString());
@@ -58,9 +54,8 @@ public class SwingUtils {
 
     /**
      * Показать диалоговое окно с сообщением об ошибке
-     *
      * @param message Сообщение
-     * @param ex      Иcключение
+     * @param ex Иcключение
      */
     public static void showErrorMessageBox(String message, Throwable ex) {
         showErrorMessageBox(message, "Ошибка", ex);
@@ -68,7 +63,6 @@ public class SwingUtils {
 
     /**
      * Показать диалоговое окно с сообщением об ошибке
-     *
      * @param ex Иcключение
      */
     public static void showErrorMessageBox(Throwable ex) {
@@ -78,7 +72,7 @@ public class SwingUtils {
     /**
      * Установка обработчика по умолчанию для ошибок, которые не пререхвачены
      * (обработчик устанавливается только для текущей нити, поэтому надо
-     * вызывать, например, в конструкторе формы, а не в методе main(...)
+     *  вызывать, например, в конструкторе формы, а не в методе main(...)
      */
     public static void setShowMessageDefaultErrorHandler() {
         JComponent comp;
@@ -89,10 +83,9 @@ public class SwingUtils {
 
     /**
      * Задание фиксированного размера для компонента Swing
-     *
-     * @param <T>    Тип компонента
-     * @param comp   Компонент
-     * @param width  Ширина компонента
+     * @param <T> Тип компонента
+     * @param comp Компонент
+     * @param width Ширина компонента
      * @param height Высота компонента
      * @return
      */
@@ -107,7 +100,6 @@ public class SwingUtils {
 
     /**
      * Установка темы отображения (LookAndFeel) для элементов управления
-     *
      * @param name Название темы
      */
     public static void setLookAndFeelByName(String name) {
@@ -125,15 +117,13 @@ public class SwingUtils {
                 }
             }
         } catch (Exception ex) {
-            Class inner = new Object() {
-            }.getClass();
+            Class inner = new Object() {}.getClass();
             Logger.getGlobal().logp(Level.SEVERE, inner.getEnclosingClass().getName(), inner.getEnclosingMethod().getName(), null, ex);
         }
     }
 
     /**
      * Заполнение меню JMenu элементами для выбора тем отображения (LookAndFeel)
-     *
      * @param menu Меню для добавления пунктов меню
      */
     public static void initLookAndFeelMenu(JMenu menu) {
@@ -158,9 +148,8 @@ public class SwingUtils {
 
     /**
      * Установка шрифта по умолчанию для элементов управления
-     *
      * @param fontName Название шрифта (null - не менять)
-     * @param size     Размер шрифта (меньше или равно 0 - не менять)
+     * @param size Размер шрифта (меньше или равно 0 - не менять)
      */
     public static void setDefaultFont(String fontName, int size) {
         UIManager.getDefaults().entrySet().forEach((entry) -> {
@@ -168,9 +157,9 @@ public class SwingUtils {
             if (value != null && value instanceof FontUIResource) {
                 FontUIResource fr = (FontUIResource) value;
                 fr = new FontUIResource(
-                        (fontName != null) ? fontName : fr.getFontName(),
-                        fr.getStyle(),
-                        (size > 0) ? size : fr.getSize()
+                    (fontName != null) ? fontName : fr.getFontName(),
+                    fr.getStyle(),
+                    (size > 0) ? size : fr.getSize()
                 );
                 UIManager.put(entry.getKey(), fr);
             }
@@ -179,7 +168,6 @@ public class SwingUtils {
 
     /**
      * Установка имени шрифта по умолчанию для элементов управления
-     *
      * @param fontName Название шрифта (null - не менять)
      */
     public static void setDefaultFont(String fontName) {
@@ -188,7 +176,6 @@ public class SwingUtils {
 
     /**
      * Установка размера шрифта по умолчанию для элементов управления
-     *
      * @param size Размер шрифта (меньше или равно 0 - не менять)
      */
     public static void setDefaultFont(int size) {

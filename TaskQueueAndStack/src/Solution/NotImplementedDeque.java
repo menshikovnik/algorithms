@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public interface NotImplementedDeque<T> extends Deque<T> {
     @Override
-    public default void addFirst(T t) {
+    default void addFirst(T t) {
 
     }
 
