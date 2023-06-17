@@ -1,7 +1,7 @@
 public class Test {
     public static void main(String[] args) {
         int age = 19;
-        String name = "Nikolai";
+        String newest = "Nikolai Menshikov";
         int height = 181;
         System.out.println(testFunction(age, height));
         System.out.println(age + height);
