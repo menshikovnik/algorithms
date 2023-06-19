@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Deque/Deque.iml" filepath="$PROJECT_DIR$/Deque/Deque.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaskGraph/TaskGraph.iml" filepath="$PROJECT_DIR$/TaskGraph/TaskGraph.iml" />
       <module fileurl="file://$PROJECT_DIR$/TaskObfuscator/TaskObfuscator.iml" filepath="$PROJECT_DIR$/TaskObfuscator/TaskObfuscator.iml" />
       <module fileurl="file://$PROJECT_DIR$/TaskQueueAndStack/TaskQueueAndStack.iml" filepath="$PROJECT_DIR$/TaskQueueAndStack/TaskQueueAndStack.iml" />
       <module fileurl="file://$PROJECT_DIR$/TaskSort/TaskSort.iml" filepath="$PROJECT_DIR$/TaskSort/TaskSort.iml" />
